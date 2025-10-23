@@ -4,262 +4,227 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>50 Reasons Why I Love You</title>
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
   <style>
-    * {
+    :root{
+      --pink:#c94f6d;
+      --pink-2:#d47b93;
+      --ink:#2a2a2a;
+      --paper:#ffffff;
+      --muted:#9c6a79;
+      --shadow:0 12px 35px rgba(0,0,0,.18);
+      --radius:22px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--ink);
+      line-height:1.65;
+      -webkit-font-smoothing: antialiased;
+      background:#000;
+      overflow-x:hidden;
+    }
+
+    .bg{
+      position:fixed; inset:0; z-index:-3;
+      background:url('Screenshot 2025-10-24 032557.png') center center/cover no-repeat fixed;
+      transform:translateZ(0);
+    }
+    .bg::after{
+      content:"";
+      position:absolute; inset:0;
+      background:
+        radial-gradient(80% 80% at 50% 20%, rgba(0,0,0,.0) 0%, rgba(0,0,0,.25) 60%, rgba(0,0,0,.45) 100%),
+        linear-gradient(180deg, rgba(0,0,0,.15) 0%, rgba(0,0,0,.35) 100%);
+      pointer-events:none;
+    }
+    @media (min-width: 900px){
+      .bg{filter:saturate(1.05) contrast(1.05) brightness(0.95)}
+    }
+
+    .wrap{
+      min-height:100dvh;
+      display:flex;
+      align-items:flex-start;
+      justify-content:center;
+      padding: clamp(24px, 4vw, 48px) 16px 64px;
+    }
+
+    .card{
+      width: min(640px, 100%);
+      background: rgba(255,255,255,.86);
+      backdrop-filter: blur(6px);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255,255,255,.6);
+      overflow:hidden;
+      animation: fadeIn .7s ease both;
+    }
+
+    header{
+      text-align:center;
+      padding: clamp(24px,4vw,36px) clamp(18px,4vw,28px) 10px;
+      border-bottom:1px solid rgba(0,0,0,.06);
+      background: linear-gradient(180deg, rgba(255,255,255,.96), rgba(255,255,255,.88));
+    }
+    h1{
+      font-family: "Dancing Script", cursive;
+      font-size: clamp(36px, 5vw, 48px);
+      line-height:1.1;
+      margin:0 0 6px;
+      background: linear-gradient(135deg, var(--pink), var(--pink-2));
+      -webkit-background-clip:text; background-clip:text;
+      -webkit-text-fill-color:transparent;
+      text-shadow: 0 1px 0 rgba(0,0,0,.06);
+    }
+    .intro{
+      font-style: italic;
+      color: var(--muted);
+      font-size: 15px;
+      margin:0 0 4px;
+    }
+
+    .content{
+      padding: clamp(18px,3.5vw,28px);
+      background: linear-gradient(180deg, rgba(255,255,255,.92), rgba(255,255,255,.86));
+    }
+
+    ol{
+      counter-reset: n;
+      padding-left: 0;
       margin: 0;
-      padding: 0;
-      box-sizing: border-box;
     }
-    
-    body {
-      font-family: 'Poppins', sans-serif;
-      min-height: 100vh;
-      position: relative;
-      overflow-x: hidden;
+    li{
+      counter-increment:n;
+      list-style:none;
+      position:relative;
+      padding: 14px 16px 14px 56px;
+      margin: 10px 0;
+      border-radius: 14px;
+      background: #fff;
+      border: 1px solid rgba(0,0,0,.06);
+      box-shadow: 0 6px 18px rgba(0,0,0,.06);
+      transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
     }
-    
-    /* Background with overlay */
-    body::before {
-      content: '';
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      /* When you upload background.jpg, replace the line above with: */
-      /* background: url('background.jpg') center/cover no-repeat fixed; */
-      z-index: -2;
-      background: url('Screenshot 2025-10-24 032557.png') center/cover no-repeat fixed;    
-    /* Overlay for readability */
-    body::after {
-      content: '';
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(255, 255, 255, 0.92);
-      backdrop-filter: blur(3px);
-      z-index: -1;
+    li::before{
+      content: counter(n);
+      position:absolute; left:14px; top:50%; transform:translateY(-50%);
+      width:32px; height:32px; border-radius:50%;
+      display:grid; place-items:center;
+      font-weight:600; font-size:12px; color:#fff;
+      background: linear-gradient(135deg, var(--pink), var(--pink-2));
+      box-shadow: 0 3px 10px rgba(201,79,109,.35);
     }
-    
-    .container {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 2rem 1.5rem;
-      position: relative;
+    li:hover{
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px rgba(0,0,0,.10);
+      border-color: rgba(0,0,0,.10);
     }
-    
-    /* Header */
-    header {
-      text-align: center;
-      padding: 3rem 0;
-      animation: fadeInDown 1s ease;
+    .inside-joke{
+      font-weight:600; color: var(--pink);
+      background: linear-gradient(180deg, rgba(201,79,109,.06), rgba(201,79,109,.03));
+      border-color: rgba(201,79,109,.20);
     }
-    
-    h1 {
-      font-family: 'Dancing Script', cursive;
-      font-size: 3.5rem;
-      background: linear-gradient(135deg, #c94f6d, #d47b93);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      margin-bottom: 1rem;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-    }
-    
-    .subtitle {
-      font-size: 1.2rem;
-      color: #c94f6d;
-      font-weight: 300;
+
+    footer{
+      text-align:center;
+      padding: 16px 20px 24px;
+      color: var(--muted);
       font-style: italic;
-      margin-bottom: 0.5rem;
+      background: linear-gradient(180deg, rgba(255,255,255,.88), rgba(255,255,255,.92));
+      border-top:1px solid rgba(0,0,0,.06);
     }
-    
-    .heart {
-      font-size: 2rem;
-      animation: heartbeat 1.5s infinite;
+
+    @keyframes fadeIn{
+      from{opacity:0; transform: translateY(8px)}
+      to{opacity:1; transform: translateY(0)}
     }
-    
-    /* Reasons Container */
-    .reasons-container {
-      background: rgba(255, 255, 255, 0.95);
-      border-radius: 30px;
-      padding: 3rem 2rem;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.15);
-      margin-bottom: 3rem;
-      animation: fadeInUp 1s ease 0.3s backwards;
+    .fade{
+      opacity:0; transform: translateY(10px);
+      animation: fadeIn .5s ease forwards;
     }
-    
-    ol {
-      list-style: none;
-      counter-reset: reason-counter;
-      padding: 0;
-    }
-    
-    li {
-      counter-increment: reason-counter;
-      margin-bottom: 2rem;
-      padding: 1.5rem;
-      border-radius: 15px;
-      background: linear-gradient(135deg, #fff 0%, #f8f9ff 100%);
-      border-left: 4px solid #c94f6d;
-      position: relative;
-      transition: all 0.3s ease;
-      animation: fadeInUp 0.6s ease backwards;
-      animation-delay: calc(0.05s * var(--order));
-    }
-    
-    li:hover {
-      transform: translateX(10px);
-      box-shadow: 0 10px 30px rgba(201, 79, 109, 0.2);
-    }
-    
-    li::before {
-      content: counter(reason-counter);
-      position: absolute;
-      left: -20px;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 40px;
-      height: 40px;
-      background: linear-gradient(135deg, #c94f6d, #d47b93);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-weight: 600;
-      font-size: 0.9rem;
-      box-shadow: 0 4px 15px rgba(201, 79, 109, 0.4);
-    }
-    
-    .inside-joke {
-      font-weight: 600;
-      color: #c94f6d;
-      background: linear-gradient(135deg, rgba(201, 79, 109, 0.1), rgba(212, 123, 147, 0.1));
-      padding: 1.5rem;
-      border-radius: 15px;
-      border-left: 4px solid #d47b93;
-    }
-    
-    /* Footer */
-    footer {
-      text-align: center;
-      padding: 2rem 0 3rem;
-      font-size: 1.3rem;
-      font-style: italic;
-      color: #c94f6d;
-      font-weight: 600;
-      animation: fadeInUp 1s ease 0.6s backwards;
-    }
-    
-    /* Animations */
-    @keyframes fadeInDown {
-      from {
-        opacity: 0;
-        transform: translateY(-30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-    
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-    
-    @keyframes heartbeat {
-      0%, 100% { transform: scale(1); }
-      10%, 30% { transform: scale(1.2); }
-      20%, 40% { transform: scale(1); }
-    }
-    
-    /* Responsive */
-    @media (max-width: 768px) {
-      h1 { font-size: 2.5rem; }
-      .reasons-container { padding: 2rem 1rem; }
-      li { padding: 1rem; margin-left: 20px; }
-      li::before { left: -30px; }
+    .fade:nth-child(1){animation-delay:.02s}
+    .fade:nth-child(2){animation-delay:.04s}
+    .fade:nth-child(3){animation-delay:.06s}
+    .fade:nth-child(4){animation-delay:.08s}
+    .fade:nth-child(5){animation-delay:.10s}
+
+    @media (max-width:520px){
+      .card{border-radius:18px}
+      li{padding:12px 12px 12px 52px}
+      li::before{left:12px}
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <h1>50 Reasons Why I Love You</h1>
-      <p class="subtitle">A little love letter for our first year together</p>
-      <div class="heart">❤️</div>
-    </header>
-    
-    <div class="reasons-container">
-      <ol>
-        <li style="--order: 1">You are my best friend as well as my soulmate.</li>
-        <li style="--order: 2">You make me feel listened to.</li>
-        <li style="--order: 3">You make me feel I matter.</li>
-        <li style="--order: 4">You changed yourself when I was anxious or insecure even if you weren't okay with it.</li>
-        <li style="--order: 5">You deal with my anxieties and insecurities even if it means sacrificing part of your happiness.</li>
-        <li style="--order: 6">We always come back stronger after a fight.</li>
-        <li style="--order: 7">The way you hug me.</li>
-        <li style="--order: 8">I love the way you crave me.</li>
-        <li style="--order: 9">Our makeouts.</li>
-        <li style="--order: 10">How desperate you get when you're around me in real life.</li>
-        <li style="--order: 11">The way we bond when we're together.</li>
-        <li style="--order: 12">How we aren't on our phones but just in the moment (except when recording videos!).</li>
-        <li style="--order: 13">The way you laugh at my silly jokes 😭.</li>
-        <li style="--order: 14">When I'm feeling low, you try to cheer me up.</li>
-        <li style="--order: 15">The way you remember small details and conversations from our past — it makes me blush.</li>
-        <li style="--order: 16">The way you forced me to take my medicines when I was sick by tempting me with dudes 😭.</li>
-        <li style="--order: 17">How you motivate me to study when I feel low.</li>
-        <li style="--order: 18">You listen to me whenever I need to vent, even until you are exhausted.</li>
-        <li style="--order: 19">The way you get happy by my happiness and sad when I'm sad — it's so cute 😭.</li>
-        <li style="--order: 20">The way you start glowing when you're around me.</li>
-        <li style="--order: 21">I love the way you act like a kid around me — it makes me feel so special that you feel safe with me 😭.</li>
-        <li style="--order: 22">The way you twerk — ehem, and all that, ehem ehem.</li>
-        <li style="--order: 23">The way when I tell you something that bothers me, you try to take care of it 😭 — I love it.</li>
-        <li style="--order: 24">The way you get on your toes to kiss me — obviously gotta love it 😭.</li>
-        <li style="--order: 25">Our inside jokes, especially:</li>
-        <li class="inside-joke" style="--order: 26">"Who would wanna go away from you?" — because truly, who would?</li>
-        <li style="--order: 27">Whatever happens, whatever tea you get, you share it with me first.</li>
-        <li style="--order: 28">The way you look at me when we're together.</li>
-        <li style="--order: 29">The way you come to me with gossips 😭.</li>
-        <li style="--order: 30">I love the fact I'm your go-to person.</li>
-        <li style="--order: 31">Even when you easily get frustrated, you try to control it with me.</li>
-        <li style="--order: 32">The way how we are so different yet you try to make changes for me so I feel safe — I'm really grateful for that; it means a lot to me.</li>
-        <li style="--order: 33">The way when you're around me, I literally feel like my heart is skipping a beat — that feeling you give me when we're together, I love it so much 😭.</li>
-        <li style="--order: 34">I love how when I win something or achieve something, you support me and cheer so loud — it's so cute how you're happier than I am for my wins.</li>
-        <li style="--order: 35">Your willingness to make this work — how you changed from not trying at all to trying your best for a better future for us, even college stuff; it means a lot to me.</li>
-        <li style="--order: 36">The way you want to capture all our moments on video to revisit — one of the best things we've done, even if we're joking about it 😭.</li>
-        <li style="--order: 37">Your touch — from a little touch to that craving of merging skins, it's never enough but I love it.</li>
-        <li style="--order: 38">Our hugs feel so safe in your arms; I love you so much.</li>
-        <li style="--order: 39">The way you appreciate my efforts (even if sometimes you ignore them), but you try to make me feel appreciated.</li>
-        <li style="--order: 40">Being so different from each other yet adapting and coming to a mutual ground so both of us feel safe — my favorite thing growing together while respecting feelings.</li>
-        <li style="--order: 41">Getting mad at me but always forgiving each other and bonding well after fights — coming back stronger from worse things.</li>
-        <li style="--order: 42">Trying to surprise me — how you tried your best to make my birthday feel special even though I never celebrated it or got excited for it; I'm sorry if I messed up 😔.</li>
-        <li style="--order: 43">The way we bully and love each other — such a unique love language that's so cute.</li>
-        <li style="--order: 44">How you told your friends about me and simp on me in the early stage — those chats were adorable 😭.</li>
-        <li style="--order: 45">The way you bring back things from the past you love, like that lizard thingy — so cute 😭.</li>
-        <li style="--order: 46">You respecting my feelings even after differences — I love it 😭.</li>
-        <li style="--order: 47">The way you match my freak — we're both so horny for each other.</li>
-        <li style="--order: 48">😭 You lost your v card at your birthday — hehe, yes, obviously I love that.</li>
-        <li style="--order: 49">You feeling safe enough to be okay having sex with me and sharing intimate things — it means a lot to me 😭.</li>
-        <li style="--order: 50">Our late-night talks — I love and miss them so much.</li>
-        <li style="--order: 51">How quickly we bonded and got okay with each other — from strangers to lovers like a perfect story.</li>
-      </ol>
-    </div>
-    
-    <footer>
-      Here's to us — from Nexus to forever ❤️
-    </footer>
-  </div>
+  <div class="bg" aria-hidden="true"></div>
+  <main class="wrap">
+    <article class="card">
+      <header>
+        <h1>50 Reasons Why I Love You</h1>
+        <p class="intro">A little love letter for our first year together ❤️</p>
+      </header>
+
+      <section class="content">
+        <ol>
+          <li class="fade">You are my best friend as well as my soulmate.</li>
+          <li class="fade">You make me feel listened to.</li>
+          <li class="fade">You make me feel I matter.</li>
+          <li class="fade">You changed yourself when I was anxious or insecure even if you weren't okay with it.</li>
+          <li class="fade">You deal with my anxieties and insecurities even if it means sacrificing part of your happiness.</li>
+          <li class="fade">We always come back stronger after a fight.</li>
+          <li class="fade">The way you hug me.</li>
+          <li class="fade">I love the way you crave me.</li>
+          <li class="fade">Our makeouts.</li>
+          <li class="fade">How desperate you get when you're around me in real life.</li>
+          <li class="fade">The way we bond when we're together.</li>
+          <li class="fade">How we aren't on our phones but just in the moment (except when recording videos!).</li>
+          <li class="fade">The way you laugh at my silly jokes 😭.</li>
+          <li class="fade">When I'm feeling low, you try to cheer me up.</li>
+          <li class="fade">The way you remember small details and conversations from our past — it makes me blush.</li>
+          <li class="fade">The way you forced me to take my medicines when I was sick by tempting me with dudes 😭.</li>
+          <li class="fade">How you motivate me to study when I feel low.</li>
+          <li class="fade">You listen to me whenever I need to vent, even until you are exhausted.</li>
+          <li class="fade">The way you get happy by my happiness and sad when I'm sad — it's so cute 😭.</li>
+          <li class="fade">The way you start glowing when you're around me.</li>
+          <li class="fade">I love the way you act like a kid around me — it makes me feel so special that you feel safe with me 😭.</li>
+          <li class="fade">The way you twerk — ehem, and all that, ehem ehem.</li>
+          <li class="fade">The way when I tell you something that bothers me, you try to take care of it 😭 — I love it.</li>
+          <li class="fade">The way you get on your toes to kiss me — obviously gotta love it 😭.</li>
+          <li class="fade">Our inside jokes, especially:</li>
+          <li class="inside-joke fade">"Who would wanna go away from you?" — because truly, who would?</li>
+          <li class="fade">Whatever happens, whatever tea you get, you share it with me first.</li>
+          <li class="fade">The way you look at me when we're together.</li>
+          <li class="fade">The way you come to me with gossips 😭.</li>
+          <li class="fade">I love the fact I'm your go-to person.</li>
+          <li class="fade">Even when you easily get frustrated, you try to control it with me.</li>
+          <li class="fade">The way how we are so different yet you try to make changes for me so I feel safe — I'm really grateful for that; it means a lot to me.</li>
+          <li class="fade">The way when you're around me, I literally feel like my heart is skipping a beat — that feeling you give me when we're together, I love it so much 😭.</li>
+          <li class="fade">I love how when I win something or achieve something, you support me and cheer so loud — it's so cute how you're happier than I am for my wins.</li>
+          <li class="fade">Your willingness to make this work — how you changed from not trying at all to trying your best for a better future for us, even college stuff; it means a lot to me.</li>
+          <li class="fade">The way you want to capture all our moments on video to revisit — one of the best things we've done, even if we're joking about it 😭.</li>
+          <li class="fade">Your touch — from a little touch to that craving of merging skins, it's never enough but I love it.</li>
+          <li class="fade">Our hugs feel so safe in your arms; I love you so much.</li>
+          <li class="fade">The way you appreciate my efforts (even if sometimes you ignore them), but you try to make me feel appreciated.</li>
+          <li class="fade">Being so different from each other yet adapting and coming to a mutual ground so both of us feel safe — my favorite thing growing together while respecting feelings.</li>
+          <li class="fade">Getting mad at me but always forgiving each other and bonding well after fights — coming back stronger from worse things.</li>
+          <li class="fade">Trying to surprise me — how you tried your best to make my birthday feel special even though I never celebrated it or got excited for it; I'm sorry if I messed up 😔.</li>
+          <li class="fade">The way we bully and love each other — such a unique love language that's so cute.</li>
+          <li class="fade">How you told your friends about me and simp on me in the early stage — those chats were adorable 😭.</li>
+          <li class="fade">The way you bring back things from the past you love, like that lizard thingy — so cute 😭.</li>
+          <li class="fade">You respecting my feelings even after differences — I love it 😭.</li>
+          <li class="fade">The way you match my freak — we're both so horny for each other.</li>
+          <li class="fade">😭 You lost your v card at your birthday — hehe, yes, obviously I love that.</li>
+          <li class="fade">You feeling safe enough to be okay having sex with me and sharing intimate things — it means a lot to me 😭.</li>
+          <li class="fade">Our late-night talks — I love and miss them so much.</li>
+          <li class="fade">How quickly we bonded and got okay with each other — from strangers to lovers like a perfect story.</li>
+        </ol>
+      </section>
+
+      <footer>Here's to us — from Nexus to forever ❤️</footer>
+    </article>
+  </main>
 </body>
 </html>
