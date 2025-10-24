@@ -419,6 +419,47 @@
         <div class="tap-hint">👆 Click the envelope</div>
     </div>
 
+  <script>
+
+    // Inline script to handle envelope click - runs immediately after envelope element loads
+    const envelope = document.getElementById('envelope');
+    const letterOverlay = document.getElementById('letterOverlay');
+
+    function createEmojiExplosion() {
+        const emojis = ['💋', '😘', '💖', '💕', '💗', '💝', '❤️', '💌', '💓', '💞'];
+        const explosionCount = 30;
+
+        for (let i = 0; i < explosionCount; i++) {
+              setTimeout(() => {
+                      const emoji = document.createElement('div');
+                      emoji.className = 'emoji-explosion';
+                      emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+                      emoji.style.left = Math.random() * 100 + '%';
+                      emoji.style.animationDelay = Math.random() * 0.5 + 's';
+                      letterOverlay.appendChild(emoji);
+
+                      setTimeout(() => {
+                                emoji.remove();
+                              }, 2000);
+                    }, i * 50);
+            }
+      }
+
+    if (envelope) {
+        envelope.addEventListener('click', function() {
+              envelope.classList.add('opened');
+              createEmojiExplosion();
+
+              setTimeout(() => {
+                      letterOverlay.style.opacity = '0';
+                      setTimeout(() => {
+                                letterOverlay.style.display = 'none';
+                              }, 500);
+                    }, 2500);
+            });
+      }
+      </script>
+
   <!-- Photo Stickers positioned around page -->
   <div class="photo-stickers">
     <div class="photo-sticker sticker-1">
