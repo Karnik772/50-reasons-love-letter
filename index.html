@@ -354,7 +354,7 @@
       <div class="reason-card"><div class="reason-number">24</div><div class="reason-text">The way you get on your toes to kiss me — obviously gotta love it 😭.</div></div>
       <div class="reason-card"><div class="reason-number">25</div><div class="reason-text">Our inside jokes, especially:</div></div>
       <div class="reason-card"><div class="reason-number">26</div><div class="reason-text inside-joke">"Who would wanna go away from you?" — because truly, who would?</div></div>
-      <div class="reason-card"><div class="reason-number">27</div><div class="reason-text inside-joke">"How's my Batman watch face?" — you always notice the little things and make it special.</div></div>
+      <div class="reason-card"><div class="reason-number">27</div><div class="reason-text inside-joke">You always notice little things and make it special.</div></div>
       <div class="reason-card"><div class="reason-number">28</div><div class="reason-text">Whatever happens, whatever tea you get, you share it with me first.</div></div>
       <div class="reason-card"><div class="reason-number">29</div><div class="reason-text">The way you look at me when we're together.</div></div>
       <div class="reason-card"><div class="reason-number">30</div><div class="reason-text">The way you come to me with gossips 😭.</div></div>
@@ -386,6 +386,102 @@
       <small>Our late-night talks — I love and miss them so much.<br>
       How quickly we bonded and got okay with each other — from strangers to lovers like a perfect story.</small>
     </footer>
-  </div>
+  </div
+    
+    <script>
+    // Add click effect to reason cards
+    const cards = document.querySelectorAll('.reason-card');
+    
+    cards.forEach(card => {
+        card.addEventListener('click', function() {
+            // Add a pulse animation
+            this.style.transform = 'scale(1.05)';
+            setTimeout(() => {
+                this.style.transform = 'translateY(-5px)';
+            }, 200);
+            
+            // Create heart animation
+            const heart = document.createElement('div');
+            heart.textContent = '💖';
+            heart.style.position = 'absolute';
+            heart.style.fontSize = '2rem';
+            heart.style.animation = 'heartFloat 1s ease-out forwards';
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.pointerEvents = 'none';
+            this.appendChild(heart);
+            
+            setTimeout(() => heart.remove(), 1000);
+        });
+        
+        // Add hover sound effect indication
+        card.addEventListener('mouseenter', function() {
+            const number = this.querySelector('.reason-number');
+            number.style.transform = 'rotate(360deg)';
+            number.style.transition = 'transform 0.6s ease';
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            const number = this.querySelector('.reason-number');
+            number.style.transform = 'rotate(0deg)';
+        });
+    });
+    
+    // Add extra CSS for heart animation
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes heartFloat {
+            0% {
+                opacity: 1;
+                transform: translateY(0) scale(0);
+            }
+            50% {
+                opacity: 1;
+                transform: translateY(-30px) scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-60px) scale(0.5);
+            }
+        }
+        
+        .reason-card {
+            position: relative;
+            overflow: visible;
+        }
+        
+        .reason-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 20px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            z-index: -1;
+        }
+        
+        .reason-card:hover::before {
+            opacity: 0.1;
+        }
+    `;
+    document.head.appendChild(style);
+    
+    // Add floating hearts randomly
+    setInterval(() => {
+        if (Math.random() > 0.7) {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.textContent = ['❤️', '💕', '💖', '💗', '💝'][Math.floor(Math.random() * 5)];
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.top = Math.random() * 100 + '%';
+            document.querySelector('.hearts-bg').appendChild(heart);
+            
+            setTimeout(() => heart.remove(), 3000);
+        }
+    }, 2000);
+</script>>
 </body>
 </html>
